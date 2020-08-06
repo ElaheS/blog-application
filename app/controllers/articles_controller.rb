@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-	before_action :set_article , only: [:show]
+	before_action :set_article , only: [:show, :destroy, :edit, :update]
 
 	def new
 		@article = Article.new
@@ -22,6 +22,25 @@ class ArticlesController < ApplicationController
 		@articles = Article.all
 	end
 
+	def destroy
+		@article.destroy
+		flash[:notic] = "Article was deleter successfully"
+		redirect_to articles_path
+	end
+
+	def edit
+		
+	end
+
+	def update
+		if @article.update(article_params)
+			flash[:notice] = "Article was successfully updated"
+			redirect_to article_path(@article)
+		else
+			render 'edit'
+		end
+		
+	end
 
 	private
 
