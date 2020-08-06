@@ -1,0 +1,24 @@
+<h1>"This is index"</h1>
+
+
+<%= link_to  'Create new index', new_article_path %>
+
+<table>
+	<tr>
+		<th>Title</th>
+		<th>Text</th>
+	</tr>
+	<tr>
+		<% @articles.each do |article|%>
+			<tr>
+				<td><%= article.title %></td>
+				<td><%= article.text %></td>
+				<td><%= link_to 'Edite', edit_article_path(article) %></td>
+				<td><%= link_to 'show', article_path(article) %></td>
+			</tr>
+		<% end %>
+	</tr>
+
+</table>
+
+
